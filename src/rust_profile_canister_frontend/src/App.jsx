@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { icp_backend } from 'declarations/icp_backend';
+import { rust_profile_canister_backend } from 'declarations/rust_profile_canister_backend';
 
 function App() {
   const [greeting, setGreeting] = useState('');
@@ -7,7 +7,7 @@ function App() {
   function handleSubmit(event) {
     event.preventDefault();
     const name = event.target.elements.name.value;
-    icp_backend.greet(name).then((greeting) => {
+    rust_profile_canister_backend.greet(name).then((greeting) => {
       setGreeting(greeting);
     });
     return false;

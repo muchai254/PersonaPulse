@@ -1,0 +1,14 @@
+// We need to define UserDetails here so Candid knows the return type
+type UserDetails = record {
+  "firstName" : text;
+  "lastName" : text;
+  "skills" : text;
+  "clientReviews" : text;
+};
+
+service : {
+  "register_passphrase" : (text, vec text) -> (variant { Ok; Err: text });
+  "get_usernames" : (text) -> (opt vec text) query;
+  // ✅ NEW WORKFLOW FUNCTION DEFINITION ✅
+  "get_profile_by_username" : (text) -> (variant { Ok: UserDetails; Err: text });
+}

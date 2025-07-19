@@ -1,5 +1,6 @@
 [workspace]
 members = [
-    "src/icp_backend"
+  "src/rust_profile_canister_backend",
+  "src/rust_profile_canister_backend_registry"
 ]
 resolver = "2"

@@ -1,0 +1,28 @@
+type UserDetails = record {
+  "firstName" : text;
+  "lastName" : text;
+  "skills" : text;
+  "clientReviews" : text;
+};
+
+type QueryField = variant {
+  "all";
+  "firstName";
+  "lastName";
+  "skills";
+  "clientReviews";
+};
+
+type ReadResult = variant {
+  "all" : UserDetails;
+  "field" : text;
+  "notFound";
+  "error" : text;
+};
+
+service : {
+  "write" : (text, UserDetails) -> (text);
+  "read" : (text, opt QueryField) -> (ReadResult) query;
+  // ✅ NEW FUNCTION DEFINITION ✅
+  "get_user_details_by_passkey" : (text) -> (opt UserDetails);
+}

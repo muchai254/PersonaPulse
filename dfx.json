@@ -1,24 +1,25 @@
 {
   "canisters": {
-    "icp_backend": {
-      "candid": "src/icp_backend/icp_backend.did",
-      "package": "icp_backend",
-      "type": "rust"
+    "profile_backend": {
+      "type": "rust",
+      "package": "rust_profile_canister_backend",
+      "source": ["src/rust_profile_canister_backend"],
+      "candid": "src/rust_profile_canister_backend/rust_profile_canister_backend.did"
+    },
+    "registry_backend": {
+      "type": "rust",
+      "package": "rust_profile_canister_backend_registry",
+      "source": ["src/rust_profile_canister_backend_registry"],
+      "candid": "src/rust_profile_canister_backend_registry/rust_profile_canister_backend_registry.did"
     },
     "icp_frontend": {
-      "dependencies": [
-        "icp_backend"
-      ],
-      "source": [
-        "src/icp_frontend/dist"
-      ],
       "type": "assets",
-      "workspace": "icp_frontend"
+      "source": ["src/icp_frontend/dist"],
+      "dependencies": ["profile_backend", "registry_backend"]
     }
   },
   "defaults": {
     "build": {
-      "args": "",
       "packtool": ""
     }
   },
