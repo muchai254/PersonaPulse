@@ -84,9 +84,6 @@ fn read(passkey: String, field: Option<QueryField>) -> ReadResult {
     })
 }
 
-// ✅ **NEW FUNCTION** ✅
-// This is an `update` call that another canister can use to fetch details.
-// It returns an Option, which is simpler for inter-canister calls.
 #[ic_cdk::update]
 fn get_user_details_by_passkey(passkey: String) -> Option<UserDetails> {
     STATE.with(|state| {

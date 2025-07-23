@@ -4,14 +4,14 @@ use serde::Deserialize;
 use std::cell::RefCell;
 use std::collections::BTreeMap;
 
-// Required for dfx to extract the Candid interface
+
 #[query(name = "__get_candid_interface_tmp_hack")]
 fn export_candid() -> String {
     ic_cdk::export_candid!();
     String::new()
 }
 
-// This must match the struct from the profile canister
+
 #[derive(Clone, Debug, CandidType, Deserialize)]
 pub struct UserDetails {
     firstName: String,
@@ -71,7 +71,7 @@ async fn get_profile_by_username(username: Username) -> Result<UserDetails, Stri
 
     let found_passphrase = passphrase.unwrap();
 
-    // ⚠️ Replace with actual deployed profile canister ID
+   
     let profile_canister_id = Principal::from_text("uxrrr-q7777-77774-qaaaq-cai")
         .expect("Could not decode the principal.");
 
